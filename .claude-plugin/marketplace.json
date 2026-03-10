@@ -1,0 +1,26 @@
+{
+  "name": "stefan-plugins",
+  "owner": {
+    "name": "StefanStadler",
+    "email": "stadler.stefan3@googlemail.com"
+  },
+  "metadata": {
+    "description": "Claude Code plugins by Stefan Stadler — productivity and workflow tools",
+    "version": "1.0.0",
+    "pluginRoot": "./plugins"
+  },
+  "plugins": [
+    {
+      "name": "sdd-plugin",
+      "source": "./plugins/sdd-plugin",
+      "description": "Spec-Driven Development workflow: Requirements → Design → Tasks → Code",
+      "version": "1.0.0",
+      "author": {
+        "name": "StefanStadler"
+      },
+      "license": "Apache-2.0",
+      "category": "productivity",
+      "tags": ["sdd", "spec", "planning", "workflow"]
+    }
+  ]
+}
