@@ -13,6 +13,7 @@ A Claude Code plugin marketplace by [StefanStadler](https://github.com/StefanSta
 | Plugin | Description |
 |--------|-------------|
 | [sdd-plugin](./plugins/sdd-plugin/) | Spec-Driven Development: plan → implement → validate |
+| [claude-memory](./plugins/claude-memory/) | Persistent SQLite memory MCP server with lifecycle hooks |
 
 ## Installing a Plugin
 

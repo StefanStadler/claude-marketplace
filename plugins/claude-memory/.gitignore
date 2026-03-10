@@ -1,0 +1,15 @@
+# claude-memory MCP Server
+
+# Node
+node_modules/
+dist/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Database
+*.db
+*.db-shm
+*.db-wal
