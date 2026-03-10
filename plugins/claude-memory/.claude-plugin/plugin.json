@@ -1,18 +1,10 @@
 {
   "name": "claude-memory",
   "version": "2.0.0",
-  "description": "Persistent SQLite-backed memory MCP server for Claude Code — stores context, decisions, working style, and snippets with lifecycle hooks",
+  "description": "Persistent SQLite-backed memory MCP server for Claude Code — auto-captures decisions, working style, and snippets from transcripts",
   "license": "MIT",
   "author": {
     "name": "StefanStadler"
   },
-  "keywords": ["memory", "mcp", "sqlite", "context", "decisions", "workflow"],
-  "mcpServer": {
-    "runtime": "node",
-    "command": "node --import tsx/esm src/index.ts",
-    "env": {
-      "MEMORY_DB_PATH": "$HOME/.claude-memory/memory.db"
-    },
-    "install": "npm install"
-  }
+  "keywords": ["memory", "mcp", "sqlite", "context", "decisions", "workflow"]
 }
