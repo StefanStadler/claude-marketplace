@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "start": "node --import tsx/esm src/index.ts",
+    "webui": "node --import tsx/esm src/webui.ts",
     "build": "tsc",
     "start:compiled": "node dist/index.js"
   },
