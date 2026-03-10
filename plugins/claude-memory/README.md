@@ -102,7 +102,3 @@ Default path: `~/.claude-memory/memory.db`
 Override with the `MEMORY_DB_PATH` environment variable.
 
 Inspect directly with `sqlite3 ~/.claude-memory/memory.db` or any SQLite GUI.
-
-## Python version
-
-An alternative Python implementation is available as `server.py` (requires `pip install "mcp[cli]" pydantic`). The TypeScript version (`src/`) is recommended.
