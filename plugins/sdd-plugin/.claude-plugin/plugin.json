@@ -1,32 +1,10 @@
 {
   "name": "sdd-plugin",
-  "description": "Spec-Driven Development workflow for Claude Code",
   "version": "1.0.0",
-  "skills": [
-    {
-      "name": "create-plan",
-      "description": "Create a detailed implementation plan through interactive research and iteration",
-      "file": "skills/create-plan.md"
-    },
-    {
-      "name": "implement-plan",
-      "description": "Implement an approved plan phase by phase with verification checkpoints",
-      "file": "skills/implement-plan.md"
-    },
-    {
-      "name": "iterate-plan",
-      "description": "Update an existing implementation plan based on feedback",
-      "file": "skills/iterate-plan.md"
-    },
-    {
-      "name": "validate-plan",
-      "description": "Validate that an implementation matches its plan and all success criteria",
-      "file": "skills/validate-plan.md"
-    },
-    {
-      "name": "research-codebase",
-      "description": "Research the codebase thoroughly and produce a structured findings document with file:line references",
-      "file": "skills/research-codebase.md"
-    }
-  ]
+  "description": "Spec-Driven Development workflow for Claude Code",
+  "license": "Apache-2.0",
+  "author": {
+    "name": "StefanStadler"
+  },
+  "keywords": ["sdd", "spec", "planning", "workflow", "implementation"]
 }
