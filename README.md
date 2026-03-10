@@ -14,6 +14,7 @@ A Claude Code plugin marketplace by [StefanStadler](https://github.com/StefanSta
 |--------|-------------|
 | [sdd-plugin](./plugins/sdd-plugin/) | Spec-Driven Development: plan → implement → validate |
 | [claude-memory](./plugins/claude-memory/) | Persistent SQLite memory MCP server with lifecycle hooks |
+| [tailwind-layout](./plugins/tailwind-layout/) | Tailwind CSS layout skills: generate patterns, optimize responsiveness, build grids |
 
 ## Installing a Plugin
 

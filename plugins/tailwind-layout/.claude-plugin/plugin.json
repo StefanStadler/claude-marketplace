@@ -1,0 +1,10 @@
+{
+  "name": "tailwind-layout",
+  "version": "1.0.0",
+  "description": "Tailwind CSS layout skills: generate layout patterns, optimize responsive breakpoints, and build grid systems",
+  "license": "MIT",
+  "author": {
+    "name": "StefanStadler"
+  },
+  "keywords": ["tailwindcss", "layout", "grid", "flexbox", "responsive", "css"]
+}
