@@ -1,14 +1,20 @@
 # claude-memory
 
-Persistent, local memory for Claude Code — SQLite-backed MCP server that remembers context, decisions, working style, and reusable snippets across sessions.
+Persistent, local memory for Claude Code — SQLite-backed MCP server that **automatically extracts and stores** decisions, working style, and snippets from your conversations.
 
 ## Features
 
+- **Automatic capture** — after each response, Claude Haiku silently reads the transcript and extracts durable memories (decisions, preferences, snippets) without blocking you
 - **Full-text search** across all memories (SQLite FTS5)
 - **Project scoping** — memories can be global or scoped to a project
 - **Category system** — `context`, `decision`, `working_style`, `snippet`
-- **Lifecycle hooks** — auto-injects relevant memories at session start, prunes stale context, and prompts to capture decisions before stopping
-- **Web UI** — optional local browser interface (`webui.py`)
+- **Session injection** — relevant memories are loaded into Claude's context at session start
+- **Auto-pruning** — stale context memories (>60 days) are cleaned up automatically
+
+## Requirements
+
+- Node.js 18+
+- `ANTHROPIC_API_KEY` — used by the Stop hook to extract memories via Claude Haiku (automatic capture only; the MCP server itself does not require it)
 
 ## Installation
 
@@ -42,7 +48,7 @@ Or add manually to `~/.claude.json`:
 }
 ```
 
-### 3. Register lifecycle hooks (optional but recommended)
+### 3. Register lifecycle hooks (recommended)
 
 Add to your `~/.claude/settings.json`:
 
@@ -66,7 +72,7 @@ Add to your `~/.claude/settings.json`:
         "hooks": [
           {
             "type": "command",
-            "command": "node --import tsx/esm /path/to/plugins/claude-memory/src/hooks/stop.ts"
+            "command": "ANTHROPIC_API_KEY=your-key node --import tsx/esm /path/to/plugins/claude-memory/src/hooks/stop.ts"
           }
         ]
       }
@@ -75,7 +81,20 @@ Add to your `~/.claude/settings.json`:
 }
 ```
 
+The **Stop hook** is what enables automatic capture — it runs after every Claude response, reads the transcript, calls Claude Haiku to extract anything worth remembering, and saves it silently. If `ANTHROPIC_API_KEY` is not set, it exits without doing anything.
+
+## How automatic capture works
+
+1. Claude finishes a response → Stop hook fires
+2. Hook reads the last 20 messages from the session transcript
+3. Sends them to Claude Haiku with a structured extraction prompt
+4. Haiku returns a JSON array of memories (or `[]` if nothing worth saving)
+5. Memories are stored directly in the local SQLite DB
+6. Next session: SessionStart hook injects relevant memories into Claude's context
+
 ## MCP Tools
+
+You can also store and query memories manually:
 
 | Tool | Description |
 |------|-------------|
@@ -89,12 +108,12 @@ Add to your `~/.claude/settings.json`:
 
 ## Categories
 
-| Category | Use for |
-|----------|---------|
-| `context` | Session summaries, ongoing tasks, conversation context |
-| `decision` | Architecture decisions, tech choices, ADRs |
-| `working_style` | Principles, preferred approaches, workflow habits |
-| `snippet` | Reusable code patterns, commands, templates |
+| Category | Use for | Captured automatically |
+|----------|---------|------------------------|
+| `context` | Session summaries, ongoing tasks | No (manual only) |
+| `decision` | Architecture decisions, tech choices, ADRs | Yes |
+| `working_style` | Principles, preferred approaches, habits | Yes |
+| `snippet` | Reusable code patterns, commands, templates | Yes |
 
 ## Database
 
