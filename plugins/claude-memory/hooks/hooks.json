@@ -1,0 +1,40 @@
+{
+  "description": "claude-memory lifecycle hooks",
+  "hooks": {
+    "Setup": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cd \"${CLAUDE_PLUGIN_ROOT}\" && npm install --silent",
+            "timeout": 120
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"${CLAUDE_PLUGIN_ROOT}/node_modules/.bin/tsx\" \"${CLAUDE_PLUGIN_ROOT}/src/hooks/session-start.ts\"",
+            "timeout": 30
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"${CLAUDE_PLUGIN_ROOT}/node_modules/.bin/tsx\" \"${CLAUDE_PLUGIN_ROOT}/src/hooks/stop.ts\"",
+            "timeout": 60
+          }
+        ]
+      }
+    ]
+  }
+}

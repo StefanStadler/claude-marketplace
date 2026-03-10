@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "memory": {
+      "type": "stdio",
+      "command": "${CLAUDE_PLUGIN_ROOT}/node_modules/.bin/tsx",
+      "args": ["${CLAUDE_PLUGIN_ROOT}/src/index.ts"],
+      "env": {
+        "MEMORY_DB_PATH": "${HOME}/.claude-memory/memory.db"
+      }
+    }
+  }
+}
