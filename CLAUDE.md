@@ -29,6 +29,15 @@ plugins/<plugin-name>/
 
 ## Current Plugins
 
+### `claude-memory` — Persistent Memory MCP Server
+
+SQLite-backed MCP server that auto-captures decisions, working style, and code snippets from conversation transcripts via a Stop hook (uses Claude Haiku). Provides `memory_store`, `memory_search`, `memory_get`, `memory_update`, `memory_delete`, `memory_list_projects`, and `memory_stats` MCP tools. Session injection loads relevant memories at session start.
+
+- Source: `plugins/claude-memory/src/` (TypeScript, run via `tsx`)
+- DB default: `~/.claude-memory/memory.db` (override with `MEMORY_DB_PATH`)
+- Build: `npm install` + `npm run build` (or run directly with `npm start`)
+- Requires `ANTHROPIC_API_KEY` for the automatic Stop hook capture
+
 ### `sdd-plugin` — Spec-Driven Development
 
 Five skills that enforce a research → plan → implement → validate workflow:
