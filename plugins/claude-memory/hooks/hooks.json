@@ -19,8 +19,8 @@
         "hooks": [
           {
             "type": "command",
-            "command": "\"${CLAUDE_PLUGIN_ROOT}/node_modules/.bin/tsx\" \"${CLAUDE_PLUGIN_ROOT}/src/hooks/session-start.ts\"",
-            "timeout": 30
+            "command": "[ -f \"${CLAUDE_PLUGIN_ROOT}/node_modules/.bin/tsx\" ] || (cd \"${CLAUDE_PLUGIN_ROOT}\" && npm install --silent); \"${CLAUDE_PLUGIN_ROOT}/node_modules/.bin/tsx\" \"${CLAUDE_PLUGIN_ROOT}/src/hooks/session-start.ts\"",
+            "timeout": 120
           }
         ]
       }
@@ -30,8 +30,8 @@
         "hooks": [
           {
             "type": "command",
-            "command": "\"${CLAUDE_PLUGIN_ROOT}/node_modules/.bin/tsx\" \"${CLAUDE_PLUGIN_ROOT}/src/hooks/stop.ts\"",
-            "timeout": 60
+            "command": "[ -f \"${CLAUDE_PLUGIN_ROOT}/node_modules/.bin/tsx\" ] || (cd \"${CLAUDE_PLUGIN_ROOT}\" && npm install --silent); \"${CLAUDE_PLUGIN_ROOT}/node_modules/.bin/tsx\" \"${CLAUDE_PLUGIN_ROOT}/src/hooks/stop.ts\"",
+            "timeout": 120
           }
         ]
       }
